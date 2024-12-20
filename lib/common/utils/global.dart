@@ -1,5 +1,3 @@
-import 'package:baity_app/auth/utils/interfaces/auth_interface.dart';
-import 'package:baity_app/auth/utils/repositories/auth_repository.dart';
 import 'package:baity_app/common/utils/interfaces/http_request_interface.dart';
 import 'package:baity_app/common/utils/interfaces/storage_interface.dart';
 import 'package:baity_app/common/utils/repositories/http_request_repository.dart';
@@ -13,6 +11,5 @@ final locator = GetIt.instance;
 void setup(){
   locator.registerLazySingleton<StorageInterFace>(() => SecureStorageRepository());
   locator.registerLazySingleton<HttpRequestInterFace>(() => HttpRequestRepository());
-  locator.registerLazySingleton<AuthInterface>(() => AuthRepository());
   locator.registerLazySingleton<OrdersInterface>(() => OrdersRepository());
 }

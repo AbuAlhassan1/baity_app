@@ -1,11 +1,10 @@
-import 'package:baity_app/common/views/pages_wrapper.dart';
-import 'package:baity_app/onboarding/views/onboarding_page_wrapper.dart';
+import 'package:baity_app/home/views/home_page_wrapper.dart';
 import 'package:baity_app/routing/route_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
-  initialLocation: '/onboarding',
+  initialLocation: '/',
   // navigatorKey: navigatorKey,
   
   // redirect: (context, state) {
@@ -22,18 +21,13 @@ final router = GoRouter(
 
     routeBuilder(
       path: '/',
-      child: (context, state) => const PagesWrapper(),
+      child: (context, state) => const HomePageWrapper(),
     ),
+
     routeBuilder(
-      path: '/login',
+      path: '/details/:id',
       child: (context, state) => const Placeholder(),
     ),
-    
-    routeBuilder(
-      path: '/onboarding',
-      child: (context, state) => const OnboardingPageWrapper(),
-    ),
-    
 
   ],
   errorPageBuilder: (context, state) => MaterialPage(

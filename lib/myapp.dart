@@ -1,4 +1,3 @@
-import 'package:baity_app/auth/controllers/auth/auth_cubit.dart';
 import 'package:baity_app/common/controllers/cubit/orders_notification_cubit_cubit.dart';
 import 'package:baity_app/common/controllers/l10n/l10n_cubit.dart';
 import 'package:baity_app/common/controllers/theme/theme_cubit.dart';
@@ -23,7 +22,6 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => L10nCubit()),
         BlocProvider(create: (context) => ThemeCubit()),
-        BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => OrdersNotificationCubitCubit()),
         BlocProvider(create: (context) => HomeCubit()),
       ],
@@ -45,7 +43,7 @@ class _InitRouteState extends State<InitRoute> {
   @override
   void initState() {
     super.initState();
-    context.read<AuthCubit>().onAppInit();
+    // context.read<AuthCubit>().onAppInit();
   }
 
   @override
