@@ -10,7 +10,7 @@ class NetWorkImageWidget extends StatelessWidget {
   final String url;
   NetWorkImageWidget({super.key, required this.url});
 
-  final StorageInterFace storage = locator.get<StorageInterFace>();
+  final CachingInterFace storage = locator.get<CachingInterFace>();
 
   @override
   Widget build(BuildContext context) {

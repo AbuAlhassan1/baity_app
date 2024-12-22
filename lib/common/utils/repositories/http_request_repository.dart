@@ -11,13 +11,13 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 class HttpRequestRepository implements HttpRequestInterFace {
 
   @override
-  String get baseUrl => "https://iraq-baity_app.com";
+  String get baseUrl => "https://v3.ibaity.com";
   // String get testBaseUrl => "https://iraq-baity_app.com";
 
   final LogStorage logs = LogStorage();
 
 
-  Dio dio = Dio(BaseOptions(baseUrl: "https://iraq-baity_app.com/api", followRedirects: false))
+  Dio dio = Dio(BaseOptions(baseUrl: "https://v3.ibaity.com/api", followRedirects: false))
   ..interceptors.add(PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
@@ -34,7 +34,7 @@ class HttpRequestRepository implements HttpRequestInterFace {
         LogStorage.addLog(object.toString());
       },
     ));
-  StorageInterFace storage = locator.get<StorageInterFace>();
+  CachingInterFace storage = locator.get<CachingInterFace>();
 
   @override
   Future<Response?> get({

@@ -1,8 +1,10 @@
 import 'dart:developer';
 import 'package:baity_app/common/models/drop_down_menu_field_obj.dart';
+import 'package:baity_app/common/models/item_model.dart';
 import 'package:baity_app/common/views/material_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:spinner_dropdown/spinner.dart';
+import 'package:spinner_dropdown/spinner_list_item.dart';
 
 typedef GetInputName = String Function(Object item)?;
 
@@ -51,12 +53,12 @@ class _DropDownMenuWithSearch2State<T> extends State<DropDownMenuWithSearch2> {
         }
         return InkWell(
           onTap: () => SpinnerState(Spinner(
-            data: [], // items.map((item) => SpinnerListItem(data: (item as Item).name)).toList(),
-            // selectedItems: (selectedItem) async {
-            //   widget.fieldObject.selectedItem = items.where((item) => (item as Item).name == (selectedItem.first as SpinnerListItem).data.toString()).first;
-            //   await widget.fieldObject.onSelect(widget.fieldObject.selectedItem, context);
-            //   widget.fieldObject.controller.text = (selectedItem.first as SpinnerListItem).data.toString();
-            // },
+            data: items.map((item) => SpinnerListItem(data: (item as ItemModel).name)).toList(),
+            selectedItems: (selectedItem) async {
+              widget.fieldObject.selectedItem = items.where((item) => (item as ItemModel).name == (selectedItem.first as SpinnerListItem).data.toString()).first;
+              await widget.fieldObject.onSelect(widget.fieldObject.selectedItem, context);
+              widget.fieldObject.controller.text = (selectedItem.first as SpinnerListItem).data.toString();
+            },
           )).showModal(context),
           child: IgnorePointer(child: MaterialTextField(textFieldDataObject: widget.fieldObject, isDropDownMenu: true))
         );

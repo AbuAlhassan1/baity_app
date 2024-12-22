@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SimpleButton extends StatefulWidget {
   final Function? onTap;
-  const SimpleButton({super.key, this.onTap});
+  final String text;
+  const SimpleButton({super.key, this.onTap, required this.text});
 
   @override
   State<SimpleButton> createState() => _SimpleButtonState();
@@ -35,9 +36,9 @@ class _SimpleButtonState extends State<SimpleButton> {
             child: isLoading ? CircularProgressIndicator(
               color: Colors.white,
               strokeWidth: 1.sp,
-            ) : const  Text(
-              'الدخول',
-              style: TextStyle(
+            ) : Text(
+              widget.text,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
               ),

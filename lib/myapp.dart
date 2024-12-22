@@ -1,9 +1,10 @@
-import 'package:baity_app/common/controllers/cubit/orders_notification_cubit_cubit.dart';
 import 'package:baity_app/common/controllers/l10n/l10n_cubit.dart';
+import 'package:baity_app/common/controllers/master_data/master_data_cubit.dart';
 import 'package:baity_app/common/controllers/theme/theme_cubit.dart';
 import 'package:baity_app/common/controllers/theme/theme_cubit_states.dart';
 import 'package:baity_app/constants/themes.dart';
 import 'package:baity_app/home/controllers/home/home_cubit.dart';
+import 'package:baity_app/realestate/controllers/realestate_details/realestate_details_cubit.dart';
 import 'package:baity_app/routing/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => L10nCubit()),
         BlocProvider(create: (context) => ThemeCubit()),
-        BlocProvider(create: (context) => OrdersNotificationCubitCubit()),
+        BlocProvider(create: (context) => MasterDataCubit()),
         BlocProvider(create: (context) => HomeCubit()),
+        BlocProvider(create: (context) => RealestateDetailsCubit()),
       ],
       child: const InitRoute()
     );
@@ -43,6 +45,8 @@ class _InitRouteState extends State<InitRoute> {
   @override
   void initState() {
     super.initState();
+    context.read<MasterDataCubit>().getCategories();
+    context.read<MasterDataCubit>().getCities();
     // context.read<AuthCubit>().onAppInit();
   }
 
